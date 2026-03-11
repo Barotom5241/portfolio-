@@ -80,17 +80,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Gather data
             const formData = {
+                access_key: contactForm.querySelector('input[name="access_key"]').value,
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 message: document.getElementById('message').value
             };
 
             try {
-                // Send Request to Backend
-                const response = await fetch('/api/contact', {
+                // Send Request to Web3Forms (No backend server needed!)
+                const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify(formData)
                 });
